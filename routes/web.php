@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    // Halaman khusus admin (hanya untuk percobaan, nanti dihapus)
+    // Halaman khusus admin
     Route::middleware('role:admin')->group(function () {
-        Route::get('/uji-admin', fn () => 'Halo admin, halaman ini khusus kamu.');
+        Route::resource('categories', CategoryController::class)->except('show');
     });
 });

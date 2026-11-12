@@ -31,7 +31,11 @@
 
             {{-- Menu ini hanya muncul untuk admin --}}
             @if (auth()->user()->isAdmin())
-                <li><a href="#"><i class="bi bi-tags"></i> Kategori</a></li>
+                <li>
+    <a href="{{ route('categories.index') }}" class="{{ request()->routeIs('categories.*') ? 'active' : '' }}">
+        <i class="bi bi-tags"></i> Kategori
+    </a>
+</li>
                 <li><a href="#"><i class="bi bi-rulers"></i> Satuan</a></li>
                 <li><a href="#"><i class="bi bi-truck"></i> Supplier</a></li>
             @endif
@@ -83,9 +87,21 @@
             </div>
         </nav>
 
-        <main class="content">
-            @yield('content')
-        </main>
+        @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
+@yield('content')
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
