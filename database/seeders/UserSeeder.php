@@ -12,12 +12,12 @@ class UserSeeder extends Seeder
         // updateOrCreate: kalau emailnya sudah ada, datanya diperbarui, tidak dobel
         User::updateOrCreate(
             ['email' => 'admin@iconplus.test'],
-            ['name' => 'Admin IconPlus', 'password' => 'admin12345', 'role' => 'admin']
+            ['name' => 'Admin iconplus', 'password' => 'bagas12345', 'role' => 'admin']
         );
 
         User::updateOrCreate(
             ['email' => 'petugas@iconplus.test'],
-            ['name' => 'Petugas Gudang', 'password' => 'petugas12345', 'role' => 'petugas']
+            ['name' => 'Petugas gudang', 'password' => 'bagas12345', 'role' => 'petugas']
         );
     }
 }
